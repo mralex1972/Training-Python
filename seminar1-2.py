@@ -304,7 +304,6 @@
 # 26.	Дано число. Составить список чисел Фибоначчи, в том числе для отрицательных индексов. 
 #    Т е для k = 8, список будет выглядеть так:
 #    [-21 ,13, -8, 5, −3,  2, −1,  1, 0, 1, 1, 2, 3, 5, 8, 13, 21] Негафибоначчи.
-#
 # k = int(input('Укажите число k = '))
 # fib = [1, 1]
 # for i in range(2, k):
@@ -316,4 +315,236 @@
 #     nonfib.append(nonfib.pop(len(nonfib) - i - 1))
 # print(nonfib + fib)
 #
+# 27.	Строка содержит набор чисел. Показать большее и меньшее число.
+#       Символ-разделитель - пробел.
+#
+# string = '12 345 6 7890 98 765 4 3210'
+# list = []
+# num = ''
+# for i in string:
+#     if i != ' ':
+#         num += i
+#     else:
+#         list.append(int(num))
+#         num = ''
+# max = list[0]
+# min = list[0]
+# for i in range(1,len(list)):
+#     if list[i] > max:
+#         max = list[i]
+#     if list[i] < min:
+#         min = list[i]
+# print(f'Наибольшее число в строке {max}\nНаименьшее число в строке {min}')
+#
+# 28.	Найти корни квадратного уравнения Ax² + Bx + C = 0.
+#
+# a = float(input('Введите коэффициент А = '))
+# b = float(input('Введите коэффициент В = '))
+# c = float(input('Введите свободный член С = '))
+# d = b**2 - 4 * a * c
+# if d < 0:
+#     print('Вещественных корней нет')
+# elif d == 0:
+#     print(f'X = {(- b)/(2*a)}')
+# else:
+#     print(f'X1 = {round((- b - d**(1/2))/(2*a),2)}\nX2 = {round((- b + d**(1/2))/(2*a),2)}')
+#
+# 29.	Найти НОК двух чисел.
+#
+# prime_num = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173]
+# a = int(input('Введите числа: \nА = '))
+# b = int(input('B = '))
+# A = a
+# B = b
+# nok = 1
+# for i in prime_num:
+#     while a % i == 0 or b % i == 0:
+#         nok *= i
+#         if not(a % i):
+#             a //= i
+#         if not(b % i):
+#             b //= i
+# print(f'НОК({A} и {B}) = {nok}')
+#
+# 30.	Вычислить число π c заданной точностью d.
+#   	Пример: при d = 0.001,π = 3.141.10^(-1)≤d≤10^(-10)
+#
+# d = int(input('Укажите требуемую точность (количество знаков после запятой < 8, плиз)  '))
+# e = 10 ** (- d)
+# print(f'd = {e}')
+# k = 0
+# P = 0
+# def p(k):
+#     return 4 * (-1)**k/(2*k+1)
+# while abs(p(k)) >= e:
+#     P += p(k)    
+#     k += 1
+# print(f'P = {round(P, d)}')
+#
+# 31.	Составить список простых делителей натурального числа N.
+#
+# n = int(input('Введите N = '))
+# prime_num = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251,257,263,269,271,277,281,283,293,307,311,313,317,331,337,347,349,353,359,367,373,379,383,389,397,401,409,419,421,431,433,439,443,449,457,461,463,467,479,487,491,499,503,509,521,523,541,547,557,563,569,571,577,587,593,599,601,607,613,617,619,631,641,643,647,653,659,661,673,677,683,691,701,709,719,727,733,739,743,751,757,761,769,773,787,797,809,811,821,823,827,829,839,853,857,859,863,877,881,883,887,907,911,919,929,937,941,947,953,967,971,977,983,991,997,1009,1013,1019,1021,1031,1033,1039,1049,1051,1061,1063,1069]
+# list = []
+# for num in prime_num:
+#     while n % num == 0:
+#         list.append(num)
+#         n //= num
+# print(list)
+#
+# 32.	Дана последовательность чисел. Получить список неповторяющихся элементов исходной последовательности.
+#       Пример: [1, 2, 3, 5, 1, 5, 3, 10] => [1, 2, 3, 5, 10].
+#
+# import random
+# lst = []
+# result = []
+# for i in range(random.randint(10, 20)):
+#     lst.append(random.randint(1, 10))
+# resset = set(lst)
+# result = list(resset)
+# print(f'{lst} => {result}')
+#
+# 33.	Задана натуральная степень k. Сформировать случайным образом список коэффициентов (значения от 0 до 100)
+#       многочлена и записать в файл многочлен степени k. 
+#       *Пример: k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0.
 
+# k = int(input('Укажите степень многочлена k = '))
+# import random
+# data = open('multicock.txt', 'a')
+# multiplier = str(random.randint(1,10))
+# if multiplier == '1':
+#     multiplier = ''
+# data.writelines(f'{multiplier}X^{k}')
+# for i in range(k-1, -1, -1):    
+#     multiplier = random.randint(-10, 10)
+#     mon = ''
+#     if multiplier != 0:        
+#         if multiplier > 1:
+#             mon += ' + ' + str(multiplier)
+#         if multiplier < -1:
+#             mon += ' - ' + str(abs(multiplier))
+#         if multiplier == 1:
+#             mon += ' + '  
+#         if multiplier == -1:
+#             if i == 0:
+#                 mon += ' -1 '
+#             mon += ' - '
+#         if i > 0:
+#             mon += 'X'
+#         if i > 1:
+#             mon += '^'+ str(i)
+#     data.writelines(mon)
+# data.close()
+#
+# 34.	Даны два файла в каждом из которых находится запись многочлена.
+#    Сформировать файл содержащий сумму многочленов.
+#
+# Считывание строки из файла:
+def string(path):
+    data = open(path, 'r')
+    string = ''
+    for line in data:
+        string += line 
+    return string
+# Определение степени многочлена:
+def exp(path):
+    mistring = string(path)       
+    i = 0
+    while mistring[i] != 'X':
+        i += 1
+    k = i+2
+    expon = ''
+    while mistring[k].isdigit():
+        expon += mistring[k]
+        k += 1
+    return int(expon)
+if exp('multicock1.txt') > exp('multicock2.txt'):
+    ex = exp('multicock1.txt')
+else:
+    ex = exp('multicock2.txt')
+# Анализ многочлена
+data1 = string('multicock1.txt')
+data2 = string('multicock2.txt')
+def coeflist(data, ex):
+# Список, заполненный 0, длиной наибольшей степени многочлена
+#  для дальнейшего заполнения коэффициентами:
+    cfcnts = []
+    for j in range(ex + 1):
+        cfcnts.append(0)
+# Старший коэффициент: 
+    if  data[0] + data[1] == 'X^':
+        cfcnts[len(data)-1] = 1
+    elif data[0] + data[1] == '-X':
+        cfcnts[len(data)-1] = -1
+    else:
+        n = 0
+        coef1 = ''
+        while data[n] != 'X':
+            coef1 += data[n]
+            n += 1
+        cfcnts[len(data)-1] = int(coef1)
+# Следующие коэффициенты:    
+    for i in range(4, len(data)-2):
+        if data[i]+data[i+1] == 'X^':
+            def cfcnt(data, i):
+                k = 1
+                coef = ''
+                while data[i-k].isdigit():
+                    coef = data[i-k] + coef
+                    k += 1
+                if coef == ' ':
+                    coef = '1'
+                if data[i-k-1] == '-':
+                    return int(coef)*(-1)
+                else:
+                    return int(coef) 
+# Индекс коэффициента в списке:
+            ind = ''
+            k = 2
+            while data[i+k].isdigit():
+                ind += data[i+k]
+                k += 1
+            cfcnts[int(ind)]=cfcnt(data, i)
+# Поиск Х после нахождения последнего Х^ в строке:
+            ii = i # индекс последнего вхождения Х^
+    i = ii + 6
+    while data[i] != 'X':
+        i += 1
+    cfcnts[1]=cfcnt(data, i)
+# Нахождение свободного члена:
+    if data[ex] == 'X' or (data[ex].isdigit() and data[ex - 1] == '^'):
+        cfcnts[0] = 0
+    else:
+        coef = int(data[ex-1, 2])
+        if data[ex - 4, 3].find('+') == -1:
+            coef *= -1
+    cfcnts[0] = coef
+    return cfcnts
+coeflist1 = coeflist(data1, ex)
+coeflist2 = coeflist(data2, ex)
+coef_sum_list = []
+# Создание списка коэффициентов суммы:
+for i in range(ex + 1):
+    coef_sum_list.append(coeflist1[i] + coeflist2[i])
+# Создание записи в файл:
+polynom = open('polynom.txt', 'a')
+for i in range(len(coef_sum_list)):
+    multiplier = coef_sum_list[i]
+    mon = ''
+    if multiplier != 0:
+        if multiplier > 1:
+            mon += ' + ' + str(multiplier)
+        if multiplier < -1:
+            mon += ' - ' + str(abs(multiplier))
+        if multiplier == 1 and i != len(coef_sum_list) - 1:
+            mon += ' + '
+        if multiplier == -1:
+            if i == 0:
+                mon += ' - 1'
+            mon += ' - '
+        if i > 0:
+            mon += 'X'
+        if i > 1:
+            mon += '^' + str(i)
+    polynom.writelines(mon)
+polynom.close()
